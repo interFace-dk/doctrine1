@@ -130,9 +130,12 @@ class Doctrine_Template_Listener_Timestampable extends Doctrine_Record_Listener
                 return date($options['format'], time());
             } else if ($options['type'] == 'timestamp') {
                 return date($options['format'], time());
-            } else {
+	    } else if ($options['type'] == 'timestamptz') {
+	        return date($options['format'], time());
+	    } else {
                 return time();
             }
         }
     }
 }
+
