@@ -108,6 +108,7 @@ class Doctrine_DataDict_Sqlite extends Doctrine_DataDict
             case 'time':
                 return 'TIME';
             case 'timestamp':
+            case 'timestamptz':
                 return 'DATETIME';
             case 'float':
             case 'double':

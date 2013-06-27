@@ -227,6 +227,7 @@ class Doctrine_DataDict_Mysql extends Doctrine_DataDict
                 return 'DATE';
             case 'time':
                 return 'TIME';
+            case 'timestamptz':
             case 'timestamp':
                 return 'DATETIME';
             case 'float':
@@ -503,12 +504,12 @@ class Doctrine_DataDict_Mysql extends Doctrine_DataDict
 
         $notnull  = (isset($field['notnull'])  && $field['notnull'])  ? ' NOT NULL' : '';
         $unsigned = (isset($field['unsigned']) && $field['unsigned']) ? ' UNSIGNED' : '';
-        $comment  = (isset($field['comment']) && $field['comment']) 
+        $comment  = (isset($field['comment']) && $field['comment'])
             ? " COMMENT " . $this->conn->quote($field['comment'], 'text') : '';
 
         $name = $this->conn->quoteIdentifier($name, true);
 
-        return $name . ' ' . $this->getNativeDeclaration($field) . $unsigned 
+        return $name . ' ' . $this->getNativeDeclaration($field) . $unsigned
             . $default . $unique . $notnull . $autoinc . $comment;
     }
 }
